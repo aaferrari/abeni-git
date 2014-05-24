@@ -8,27 +8,30 @@ import wx
 class MyDialog(wx.Dialog):
     def __init__(self, *args, **kwds):
         # begin wxGlade: MyDialog.__init__
-        kwds["style"] = wx.DEFAULT_DIALOG_STYLE
-        wx.Dialog.__init__(self, *args, **kwds)
-        self.label_1 = wx.StaticText(self, -1, "Enter name of herd:")
-        self.text_ctrl_herd = wx.TextCtrl(self, -1, "", style=wx.TE_PROCESS_ENTER)
-        self.button_herd = wx.Button(self, -1, "Add")
-        self.list_box_herds = wx.ListBox(self, -1, choices=[])
-        self.button_remove_herd = wx.Button(self, -1, "Remove herd")
-        self.text_ctrl_long_desc = wx.TextCtrl(self, -1, "", style=wx.TE_MULTILINE)
-        self.label_email = wx.StaticText(self, -1, "Email address of maintainer")
-        self.text_ctrl_email = wx.TextCtrl(self, -1, "")
-        self.label_name = wx.StaticText(self, -1, "Full name of maintainer (optional)")
-        self.text_ctrl_name = wx.TextCtrl(self, -1, "")
-        self.label_desc = wx.StaticText(self, -1, "Description of maintainership")
-        self.text_ctrl_desc = wx.TextCtrl(self, -1, "")
-        self.button_remove_maintainer = wx.Button(self, -1, "Clear All")
-        self.button_add_maintainer = wx.Button(self, -1, "Add")
-        self.tree_ctrl_1 = wx.TreeCtrl(self, -1, style=wx.TR_HAS_BUTTONS|wx.TR_LINES_AT_ROOT|wx.TR_DEFAULT_STYLE|wx.SUNKEN_BORDER)
-        self.stc = GentooSTC(self, -1)
-        self.button_save = wx.Button(self, wx.ID_OK, "Save")
-        self.button_cancel = wx.Button(self, wx.ID_CANCEL, "Cancel")
-        self.button_preview = wx.Button(self, -1, "Preview")
+        kwds["style"] = wxDEFAULT_DIALOG_STYLE
+        wxDialog.__init__(self, *args, **kwds)
+        self.label_1 = wxStaticText(self, wxID_ANY, _("Enter name of herd:"))
+        self.text_ctrl_herd = wxTextCtrl(self, wxID_ANY, "", style=wxTE_PROCESS_ENTER)
+        self.button_herd = wxButton(self, wxID_ANY, _("Add"))
+        self.list_box_herds = wxListBox(self, wxID_ANY, choices=[])
+        self.button_remove_herd = wxButton(self, wxID_ANY, _("Remove herd"))
+        self.text_ctrl_long_desc = wxTextCtrl(self, wxID_ANY, "", style=wxTE_MULTILINE)
+        self.sizer_11_staticbox = wxStaticBox(self, wxID_ANY, _("Long Description"))
+        self.sizer_3_staticbox = wxStaticBox(self, wxID_ANY, _("Herds"))
+        self.label_email = wxStaticText(self, wxID_ANY, _("Email address of maintainer"))
+        self.text_ctrl_email = wxTextCtrl(self, wxID_ANY, "")
+        self.label_name = wxStaticText(self, wxID_ANY, _("Full name of maintainer (optional)"))
+        self.text_ctrl_name = wxTextCtrl(self, wxID_ANY, "")
+        self.label_desc = wxStaticText(self, wxID_ANY, _("Description of maintainership"))
+        self.text_ctrl_desc = wxTextCtrl(self, wxID_ANY, "")
+        self.button_remove_maintainer = wxButton(self, wxID_ANY, _("Clear All"))
+        self.button_add_maintainer = wxButton(self, wxID_ANY, _("Add"))
+        self.sizer_7_staticbox = wxStaticBox(self, wxID_ANY, _("Maintainer"))
+        self.tree_ctrl_1 = wxTreeCtrl(self, wxID_ANY, style=wxTR_HAS_BUTTONS | wxTR_LINES_AT_ROOT | wxTR_DEFAULT_STYLE | wxSUNKEN_BORDER)
+        self.stc = GentooSTC(self, wxID_ANY)
+        self.button_save = wxButton(self, wxID_OK, _("Save"))
+        self.button_cancel = wxButton(self, wxID_CANCEL, _("Cancel"))
+        self.button_preview = wxButton(self, wxID_ANY, _("Preview"))
 
         self.__set_properties()
         self.__do_layout()
@@ -36,55 +39,56 @@ class MyDialog(wx.Dialog):
 
     def __set_properties(self):
         # begin wxGlade: MyDialog.__set_properties
-        self.SetTitle("metadata.xml")
+        self.SetTitle(_("metadata.xml"))
         # end wxGlade
 
     def __do_layout(self):
         # begin wxGlade: MyDialog.__do_layout
-        sizer_1 = wx.BoxSizer(wx.VERTICAL)
-        sizer_9 = wx.BoxSizer(wx.HORIZONTAL)
-        sizer_2 = wx.BoxSizer(wx.HORIZONTAL)
-        sizer_6 = wx.BoxSizer(wx.VERTICAL)
-        sizer_7 = wx.StaticBoxSizer(wx.StaticBox(self, -1, "Maintainer"), wx.VERTICAL)
-        sizer_8 = wx.BoxSizer(wx.HORIZONTAL)
-        sizer_3 = wx.StaticBoxSizer(wx.StaticBox(self, -1, "Herds"), wx.VERTICAL)
-        sizer_10 = wx.BoxSizer(wx.HORIZONTAL)
-        sizer_11 = wx.StaticBoxSizer(wx.StaticBox(self, -1, "Long Description"), wx.VERTICAL)
-        sizer_4 = wx.BoxSizer(wx.VERTICAL)
-        sizer_5 = wx.BoxSizer(wx.HORIZONTAL)
-        sizer_4.Add(self.label_1, 0, wx.TOP, 12)
+        sizer_1 = wxBoxSizer(wxVERTICAL)
+        sizer_9 = wxBoxSizer(wxHORIZONTAL)
+        sizer_2 = wxBoxSizer(wxHORIZONTAL)
+        sizer_6 = wxBoxSizer(wxVERTICAL)
+        self.sizer_7_staticbox.Lower()
+        sizer_7 = wxStaticBoxSizer(self.sizer_7_staticbox, wxVERTICAL)
+        sizer_8 = wxBoxSizer(wxHORIZONTAL)
+        self.sizer_3_staticbox.Lower()
+        sizer_3 = wxStaticBoxSizer(self.sizer_3_staticbox, wxVERTICAL)
+        sizer_10 = wxBoxSizer(wxHORIZONTAL)
+        self.sizer_11_staticbox.Lower()
+        sizer_11 = wxStaticBoxSizer(self.sizer_11_staticbox, wxVERTICAL)
+        sizer_4 = wxBoxSizer(wxVERTICAL)
+        sizer_5 = wxBoxSizer(wxHORIZONTAL)
+        sizer_4.Add(self.label_1, 0, wxTOP, 12)
         sizer_5.Add(self.text_ctrl_herd, 1, 0, 0)
         sizer_5.Add(self.button_herd, 0, 0, 0)
-        sizer_4.Add(sizer_5, 0, wx.ALL|wx.EXPAND, 6)
-        sizer_3.Add(sizer_4, 0, wx.EXPAND, 0)
-        sizer_3.Add(self.list_box_herds, 1, wx.ALL|wx.EXPAND, 6)
-        sizer_3.Add(self.button_remove_herd, 0, wx.ALL, 12)
-        sizer_11.Add(self.text_ctrl_long_desc, 1, wx.ALL|wx.EXPAND, 6)
-        sizer_10.Add(sizer_11, 1, wx.EXPAND, 0)
-        sizer_3.Add(sizer_10, 0, wx.EXPAND, 0)
-        sizer_2.Add(sizer_3, 1, wx.EXPAND, 0)
-        sizer_7.Add(self.label_email, 0, wx.TOP, 12)
-        sizer_7.Add(self.text_ctrl_email, 0, wx.ALL|wx.EXPAND, 4)
-        sizer_7.Add(self.label_name, 0, wx.TOP, 4)
-        sizer_7.Add(self.text_ctrl_name, 0, wx.ALL|wx.EXPAND, 6)
-        sizer_7.Add(self.label_desc, 0, wx.TOP, 4)
-        sizer_7.Add(self.text_ctrl_desc, 0, wx.ALL|wx.EXPAND, 6)
-        sizer_8.Add(self.button_remove_maintainer, 0, wx.ALL, 8)
-        sizer_8.Add(self.button_add_maintainer, 0, wx.ALL, 8)
-        sizer_7.Add(sizer_8, 0, wx.EXPAND, 0)
-        sizer_6.Add(sizer_7, 1, wx.EXPAND, 0)
-        sizer_6.Add(self.tree_ctrl_1, 1, wx.EXPAND, 0)
-        sizer_2.Add(sizer_6, 1, wx.EXPAND, 0)
-        sizer_2.Add(self.stc, 2, wx.ALL|wx.EXPAND, 6)
-        sizer_1.Add(sizer_2, 0, wx.EXPAND, 0)
-        sizer_9.Add(self.button_save, 0, wx.ALL, 20)
-        sizer_9.Add(self.button_cancel, 0, wx.ALL, 20)
-        sizer_9.Add(self.button_preview, 0, wx.ALL, 20)
-        sizer_1.Add(sizer_9, 0, wx.EXPAND, 0)
-        self.SetAutoLayout(1)
+        sizer_4.Add(sizer_5, 0, wxALL | wxEXPAND, 6)
+        sizer_3.Add(sizer_4, 0, wxEXPAND, 0)
+        sizer_3.Add(self.list_box_herds, 1, wxALL | wxEXPAND, 6)
+        sizer_3.Add(self.button_remove_herd, 0, wxALL, 12)
+        sizer_11.Add(self.text_ctrl_long_desc, 1, wxALL | wxEXPAND, 6)
+        sizer_10.Add(sizer_11, 1, wxEXPAND, 0)
+        sizer_3.Add(sizer_10, 0, wxEXPAND, 0)
+        sizer_2.Add(sizer_3, 1, wxEXPAND, 0)
+        sizer_7.Add(self.label_email, 0, wxTOP, 12)
+        sizer_7.Add(self.text_ctrl_email, 0, wxALL | wxEXPAND, 4)
+        sizer_7.Add(self.label_name, 0, wxTOP, 4)
+        sizer_7.Add(self.text_ctrl_name, 0, wxALL | wxEXPAND, 6)
+        sizer_7.Add(self.label_desc, 0, wxTOP, 4)
+        sizer_7.Add(self.text_ctrl_desc, 0, wxALL | wxEXPAND, 6)
+        sizer_8.Add(self.button_remove_maintainer, 0, wxALL, 8)
+        sizer_8.Add(self.button_add_maintainer, 0, wxALL, 8)
+        sizer_7.Add(sizer_8, 0, wxEXPAND, 0)
+        sizer_6.Add(sizer_7, 1, wxEXPAND, 0)
+        sizer_6.Add(self.tree_ctrl_1, 1, wxEXPAND, 0)
+        sizer_2.Add(sizer_6, 1, wxEXPAND, 0)
+        sizer_2.Add(self.stc, 2, wxALL | wxEXPAND, 6)
+        sizer_1.Add(sizer_2, 0, wxEXPAND, 0)
+        sizer_9.Add(self.button_save, 0, wxALL, 20)
+        sizer_9.Add(self.button_cancel, 0, wxALL, 20)
+        sizer_9.Add(self.button_preview, 0, wxALL, 20)
+        sizer_1.Add(sizer_9, 0, wxEXPAND, 0)
         self.SetSizer(sizer_1)
         sizer_1.Fit(self)
-        sizer_1.SetSizeHints(self)
         self.Layout()
         # end wxGlade
 
@@ -341,4 +345,121 @@ class MyApp(wx.App):
 
 app=MyApp(0)
 app.MainLoop()
+
+package MyDialog;
+
+use Wx qw[:everything];
+use base qw(Wx::Dialog);
+use strict;
+
+use Wx::Locale gettext => '_T';
+sub new {
+    my( $self, $parent, $id, $title, $pos, $size, $style, $name ) = @_;
+    $parent = undef              unless defined $parent;
+    $id     = -1                 unless defined $id;
+    $title  = ""                 unless defined $title;
+    $pos    = wxDefaultPosition  unless defined $pos;
+    $size   = wxDefaultSize      unless defined $size;
+    $name   = ""                 unless defined $name;
+
+    # begin wxGlade: MyDialog::new
+    $style = wxDEFAULT_DIALOG_STYLE 
+        unless defined $style;
+
+    $self = $self->SUPER::new( $parent, $id, $title, $pos, $size, $style, $name );
+    $self->{label_1} = Wx::StaticText->new($self, wxID_ANY, _T("Enter name of herd:"), wxDefaultPosition, wxDefaultSize, );
+    $self->{text_ctrl_herd} = Wx::TextCtrl->new($self, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, wxTE_PROCESS_ENTER);
+    $self->{button_herd} = Wx::Button->new($self, wxID_ANY, _T("Add"));
+    $self->{list_box_herds} = Wx::ListBox->new($self, wxID_ANY, wxDefaultPosition, wxDefaultSize, [], );
+    $self->{button_remove_herd} = Wx::Button->new($self, wxID_ANY, _T("Remove herd"));
+    $self->{text_ctrl_long_desc} = Wx::TextCtrl->new($self, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, wxTE_MULTILINE);
+    $self->{sizer_11_staticbox} = Wx::StaticBox->new($self, wxID_ANY, _T("Long Description") );
+    $self->{sizer_3_staticbox} = Wx::StaticBox->new($self, wxID_ANY, _T("Herds") );
+    $self->{label_email} = Wx::StaticText->new($self, wxID_ANY, _T("Email address of maintainer"), wxDefaultPosition, wxDefaultSize, );
+    $self->{text_ctrl_email} = Wx::TextCtrl->new($self, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, );
+    $self->{label_name} = Wx::StaticText->new($self, wxID_ANY, _T("Full name of maintainer (optional)"), wxDefaultPosition, wxDefaultSize, );
+    $self->{text_ctrl_name} = Wx::TextCtrl->new($self, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, );
+    $self->{label_desc} = Wx::StaticText->new($self, wxID_ANY, _T("Description of maintainership"), wxDefaultPosition, wxDefaultSize, );
+    $self->{text_ctrl_desc} = Wx::TextCtrl->new($self, wxID_ANY, "", wxDefaultPosition, wxDefaultSize, );
+    $self->{button_remove_maintainer} = Wx::Button->new($self, wxID_ANY, _T("Clear All"));
+    $self->{button_add_maintainer} = Wx::Button->new($self, wxID_ANY, _T("Add"));
+    $self->{sizer_7_staticbox} = Wx::StaticBox->new($self, wxID_ANY, _T("Maintainer") );
+    $self->{tree_ctrl_1} = Wx::TreeCtrl->new($self, wxID_ANY, wxDefaultPosition, wxDefaultSize, wxTR_HAS_BUTTONS|wxTR_LINES_AT_ROOT|wxTR_DEFAULT_STYLE|wxSUNKEN_BORDER);
+    $self->{stc} = GentooSTC->new($self, wxID_ANY);
+    $self->{button_save} = Wx::Button->new($self, wxID_OK, _T("Save"));
+    $self->{button_cancel} = Wx::Button->new($self, wxID_CANCEL, _T("Cancel"));
+    $self->{button_preview} = Wx::Button->new($self, wxID_ANY, _T("Preview"));
+
+    $self->__set_properties();
+    $self->__do_layout();
+
+    # end wxGlade
+    return $self;
+
+}
+
+
+sub __set_properties {
+    my $self = shift;
+    # begin wxGlade: MyDialog::__set_properties
+    $self->SetTitle(_T("metadata.xml"));
+    $self->{list_box_herds}->SetSelection(0);
+    # end wxGlade
+}
+
+sub __do_layout {
+    my $self = shift;
+    # begin wxGlade: MyDialog::__do_layout
+    $self->{sizer_1} = Wx::BoxSizer->new(wxVERTICAL);
+    $self->{sizer_9} = Wx::BoxSizer->new(wxHORIZONTAL);
+    $self->{sizer_2} = Wx::BoxSizer->new(wxHORIZONTAL);
+    $self->{sizer_6} = Wx::BoxSizer->new(wxVERTICAL);
+    $self->{sizer_7_staticbox}->Lower();
+    $self->{sizer_7} = Wx::StaticBoxSizer->new($self->{sizer_7_staticbox}, wxVERTICAL);
+    $self->{sizer_8} = Wx::BoxSizer->new(wxHORIZONTAL);
+    $self->{sizer_3_staticbox}->Lower();
+    $self->{sizer_3} = Wx::StaticBoxSizer->new($self->{sizer_3_staticbox}, wxVERTICAL);
+    $self->{sizer_10} = Wx::BoxSizer->new(wxHORIZONTAL);
+    $self->{sizer_11_staticbox}->Lower();
+    $self->{sizer_11} = Wx::StaticBoxSizer->new($self->{sizer_11_staticbox}, wxVERTICAL);
+    $self->{sizer_4} = Wx::BoxSizer->new(wxVERTICAL);
+    $self->{sizer_5} = Wx::BoxSizer->new(wxHORIZONTAL);
+    $self->{sizer_4}->Add($self->{label_1}, 0, wxTOP, 12);
+    $self->{sizer_5}->Add($self->{text_ctrl_herd}, 1, 0, 0);
+    $self->{sizer_5}->Add($self->{button_herd}, 0, 0, 0);
+    $self->{sizer_4}->Add($self->{sizer_5}, 0, wxALL|wxEXPAND, 6);
+    $self->{sizer_3}->Add($self->{sizer_4}, 0, wxEXPAND, 0);
+    $self->{sizer_3}->Add($self->{list_box_herds}, 1, wxALL|wxEXPAND, 6);
+    $self->{sizer_3}->Add($self->{button_remove_herd}, 0, wxALL, 12);
+    $self->{sizer_11}->Add($self->{text_ctrl_long_desc}, 1, wxALL|wxEXPAND, 6);
+    $self->{sizer_10}->Add($self->{sizer_11}, 1, wxEXPAND, 0);
+    $self->{sizer_3}->Add($self->{sizer_10}, 0, wxEXPAND, 0);
+    $self->{sizer_2}->Add($self->{sizer_3}, 1, wxEXPAND, 0);
+    $self->{sizer_7}->Add($self->{label_email}, 0, wxTOP, 12);
+    $self->{sizer_7}->Add($self->{text_ctrl_email}, 0, wxALL|wxEXPAND, 4);
+    $self->{sizer_7}->Add($self->{label_name}, 0, wxTOP, 4);
+    $self->{sizer_7}->Add($self->{text_ctrl_name}, 0, wxALL|wxEXPAND, 6);
+    $self->{sizer_7}->Add($self->{label_desc}, 0, wxTOP, 4);
+    $self->{sizer_7}->Add($self->{text_ctrl_desc}, 0, wxALL|wxEXPAND, 6);
+    $self->{sizer_8}->Add($self->{button_remove_maintainer}, 0, wxALL, 8);
+    $self->{sizer_8}->Add($self->{button_add_maintainer}, 0, wxALL, 8);
+    $self->{sizer_7}->Add($self->{sizer_8}, 0, wxEXPAND, 0);
+    $self->{sizer_6}->Add($self->{sizer_7}, 1, wxEXPAND, 0);
+    $self->{sizer_6}->Add($self->{tree_ctrl_1}, 1, wxEXPAND, 0);
+    $self->{sizer_2}->Add($self->{sizer_6}, 1, wxEXPAND, 0);
+    $self->{sizer_2}->Add($self->{stc}, 2, wxALL|wxEXPAND, 6);
+    $self->{sizer_1}->Add($self->{sizer_2}, 0, wxEXPAND, 0);
+    $self->{sizer_9}->Add($self->{button_save}, 0, wxALL, 20);
+    $self->{sizer_9}->Add($self->{button_cancel}, 0, wxALL, 20);
+    $self->{sizer_9}->Add($self->{button_preview}, 0, wxALL, 20);
+    $self->{sizer_1}->Add($self->{sizer_9}, 0, wxEXPAND, 0);
+    $self->SetSizer($self->{sizer_1});
+    $self->{sizer_1}->Fit($self);
+    $self->Layout();
+    # end wxGlade
+}
+
+# end of class MyDialog
+
+1;
 

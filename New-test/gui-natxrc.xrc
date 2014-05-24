@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<resource class="wxMenuBar">
+  <object class="qtMenuBar"/>
+</resource>
