@@ -6,9 +6,7 @@
 
 import wx
 
-# begin wxGlade: dependencies
-# end wxGlade
-
+<1401423105813442059wxGlade replace dependencies>
 # begin wxGlade: extracode
 # end wxGlade
 
@@ -18,11 +16,11 @@ class GetURIDialog(wx.Dialog):
         # begin wxGlade: GetURIDialog.__init__
         kwds["style"] = wx.DEFAULT_DIALOG_STYLE
         wx.Dialog.__init__(self, *args, **kwds)
-        self.label_uri = wx.StaticText(self, wx.ID_ANY, _("Package URI:"))
-        self.URI = wx.TextCtrl(self, wx.ID_ANY, "")
-        self.label_template = wx.StaticText(self, wx.ID_ANY, _("Template:"))
-        self.combo_box_1 = wx.ComboBox(self, wx.ID_ANY, choices=[], style=wx.CB_DROPDOWN | wx.CB_READONLY | wx.CB_SORT)
-        self.static_line_2 = wx.StaticLine(self, wx.ID_ANY)
+        self.label_uri = wx.StaticText(self, -1, _("Package URI:"))
+        self.URI = wx.TextCtrl(self, -1, "")
+        self.label_template = wx.StaticText(self, -1, _("Template:"))
+        self.combo_box_1 = wx.ComboBox(self, -1, choices=[], style=wx.CB_DROPDOWN|wx.CB_READONLY|wx.CB_SORT)
+        self.static_line_2 = wx.StaticLine(self, -1)
         self.button_cancel = wx.Button(self, wx.ID_CANCEL, _("Cancel"))
         self.button_ok = wx.Button(self, wx.ID_OK, "")
 
@@ -46,15 +44,15 @@ class GetURIDialog(wx.Dialog):
         sizer_2 = wx.BoxSizer(wx.HORIZONTAL)
         sizer_2.Add(self.label_uri, 0, wx.LEFT, 4)
         sizer_2.Add(self.URI, 1, wx.LEFT, 12)
-        sizer_1.Add(sizer_2, 0, wx.TOP | wx.BOTTOM | wx.EXPAND, 10)
-        sizer_3.Add(self.label_template, 0, wx.LEFT | wx.ALIGN_RIGHT, 4)
+        sizer_1.Add(sizer_2, 0, wx.TOP|wx.BOTTOM|wx.EXPAND, 10)
+        sizer_3.Add(self.label_template, 0, wx.LEFT|wx.ALIGN_RIGHT, 4)
         sizer_3.Add(self.combo_box_1, 1, wx.LEFT, 20)
-        sizer_1.Add(sizer_3, 0, wx.TOP | wx.BOTTOM | wx.EXPAND, 10)
+        sizer_1.Add(sizer_3, 0, wx.TOP|wx.BOTTOM|wx.EXPAND, 10)
         sizer_1.Add(self.static_line_2, 0, wx.EXPAND, 0)
         sizer_4.Add(self.button_cancel, 0, 0, 0)
         sizer_4.Add((20, 20), 0, 0, 0)
         sizer_4.Add(self.button_ok, 0, 0, 0)
-        sizer_1.Add(sizer_4, 0, wx.ALL | wx.EXPAND, 12)
+        sizer_1.Add(sizer_4, 0, wx.ALL|wx.EXPAND, 12)
         self.SetSizer(sizer_1)
         self.Layout()
         # end wxGlade
